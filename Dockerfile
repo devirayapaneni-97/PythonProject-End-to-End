@@ -15,7 +15,7 @@ RUN pip install Flask==2.0.1
 RUN pip install Flask-MySQLdb==0.2.0
 RUN pip install requests==2.26.0
 RUN pip install Werkzeug==2.2.2
-
+RUN pip install psycopg2-binary
 
 
 # Copying application code
