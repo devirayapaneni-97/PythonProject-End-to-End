@@ -6,3 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello message"
+Build-docker-image:
+  runs-on: ubuntu-latest
+  steps:
+    - run: dokcer build -t my_flask_app_nani .
+    - run: docker image ls
