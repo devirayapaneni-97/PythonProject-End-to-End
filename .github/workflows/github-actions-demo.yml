@@ -16,7 +16,7 @@ jobs:
         with:
           registry: private-registry-url
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN}}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - run: docker build -t my_flask_app_nani .
       - run: docker image ls
       - run: docker tag my_flask_app_nani:latest devirayapaneni/nani-test:latest
