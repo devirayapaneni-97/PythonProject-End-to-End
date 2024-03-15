@@ -7,8 +7,8 @@ jobs:
     steps:
       - run: echo "Hello message"
 Build-docker-image:
-  runs-on: ubuntu-latest
-  steps:
-    - name : checkout repository
-      uses: actions/checkout@v4
-    - run : ls -lrtha
+    runs-on: ubuntu-latest
+    steps:
+      - name : checkout repository
+        uses: actions/checkout@v4
+      - run : ls -lrtha
