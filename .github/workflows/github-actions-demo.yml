@@ -1,5 +1,5 @@
 name: GitHub Actions push repository demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: ${{ github.actor }} is testing out GitHub Actions
 on: [push]
 jobs:
   Explore-GitHub-Actions:
@@ -11,4 +11,7 @@ Build-docker-image:
     steps:
       - name : checkout repository
         uses: actions/checkout@v4
-      - run : ls -lrtha
+      - run : docker build -t my_flask_app_nani .
+      - run : docker image ls
+      - run : docker tag my_flask_app_nani:latest devirayapaneni/nani-test:latest
+      - run : docker push devirayapaneni/nani-test:latest
