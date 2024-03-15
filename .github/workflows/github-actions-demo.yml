@@ -9,5 +9,6 @@ jobs:
 Build-docker-image:
   runs-on: ubuntu-latest
   steps:
-    - run: dokcer build -t my_flask_app_nani .
-    - run: docker image ls
+    - name : checkout repository
+      uses: actions/checkout@v4
+    - run : ls -lrtha
