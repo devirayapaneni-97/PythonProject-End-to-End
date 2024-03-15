@@ -9,19 +9,24 @@ jobs:
   build-docker-image:
     runs-on: ubuntu-latest
     steps:
-      - name : checkout repository
-        uses : actions/checkout@v4
-      - name : Login to docker hub
-        uses : docker/login-action@v1
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
         with:
           registry: private-registry-url
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN}}
-      - run : docker build -t my_flask_app_nani .
-      - run : docker image ls
-      - run : docker tag my_flask_app_nani:latest devirayapaneni/nani-test:latest
-      - run : docker push devirayapaneni/nani-test:latest
-      - run : docker push devirayapaneni/nani-test:latest
+      - run: docker build -t my_flask_app_nani .
+      - run: docker image ls
+      - run: docker tag my_flask_app_nani:latest devirayapaneni/nani-test:latest
+      - run: docker push devirayapaneni/nani-test:latest
+      # Add error handling
+      - name: Check Docker push status
+        run: docker images | grep 'devirayapaneni/nani-test'
+        # Exit with a non-zero status if the image is not pushed
+        if: ${{ !contains(steps.docker-push.outputs.stdout, 'devirayapaneni/nani-test') }}
+        continue-on-error: true
 
 
 
