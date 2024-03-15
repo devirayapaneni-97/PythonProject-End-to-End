@@ -20,6 +20,7 @@ jobs:
       - run : docker image ls
       - run : docker tag my_flask_app_nani:latest devirayapaneni/nani-test:latest
       - run : docker push devirayapaneni/nani-test:latest
+      - run : docker push devirayapaneni/nani-test:latest
 
 
 
